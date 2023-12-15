@@ -1,0 +1,19 @@
+.custom-selection {
+  color: #fff;
+}
+
+.custom-selection .form-select {
+  background-color: #232b31;
+  color: #fff;
+  border: none;
+  transition: all 0.5s;
+}
+
+.custom-selection .form-select option {
+  background-color: #fff;
+  color: #000;
+}
+
+.custom-selection .form-select:hover {
+  box-shadow: 5px 5px 10px rgba(225, 225, 225, 0.3), -5px -5px 10px rgba(225, 225, 225, 0.3);
+}

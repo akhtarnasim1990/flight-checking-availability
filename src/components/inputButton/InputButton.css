@@ -1,0 +1,78 @@
+.btn-comp .form-label {
+  color: #fff;
+}
+
+.btn-comp {
+  width: 100%;
+  position: relative;
+}
+
+.btn-comp .input-container .form-control {
+  border: none;
+  background-color: #232b31;
+  color: #fff;
+}
+
+.btn-comp .input-container .form-control::placeholder {
+  color: #fff;
+}
+
+.btn-comp .input-container.focused {
+  border: 3px solid #6e8291;
+}
+
+.btn-comp .input-container {
+  background-color: #232b31;
+  border: 1px solid #46535d;
+}
+
+.btn-comp .input-container {
+  display: flex;
+  align-items: center;
+  border-radius: 0.375em;
+  transition: all 0.5s;
+}
+
+.btn-comp .input-container .eye-logo {
+  color: #02abc0;
+  background-color: #232b31;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.btn-comp .custom-dropdown {
+  position: absolute;
+  z-index: 999;
+  width: 100%;
+  margin-top: 2%;
+  border-radius: 20px;
+}
+/* 
+.btn-comp .custom-dropdown ul {
+  width: 100%;
+  background-color: #ff0;
+} */
+
+.btn-comp .custom-dropdown .ul-div-s {
+  border-radius: 30px;
+}
+
+.btn-comp .custom-dropdown .ul-div-s .li-div {
+  width: 100% !important;
+  background-color: #fff;
+  padding: 2%;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-comp .custom-dropdown .ul-div-s .li-div:hover {
+  background-color: #ccc;
+}
+
+.btn-comp .input-container:hover {
+  box-shadow: 5px 5px 10px rgba(225, 225, 225, 0.3), -5px -5px 10px rgba(225, 225, 225, 0.3);
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  /* display: none; */
+  background-color: #0ec0d7;
+  /* color: #fff; */
+}

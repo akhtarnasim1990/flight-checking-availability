@@ -1,0 +1,62 @@
+.flight-list-container {
+  /* color: #fff; */
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  /* justify-content: center; */
+  flex-direction: column;
+  /* width: 100%; */
+  height: 100vh;
+  margin-top: 2%;
+}
+
+.flight-list-container .flight-list-content {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+.flight-list-container .flight-list-content .flight-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flight-list-container .flight-list-content .flight-list-header .header-left {
+  display: flex;
+}
+
+.flight-list-container .flight-list-content .flight-list-header .header-left .map-icon-div .map-icon {
+  color: #02abc0;
+  margin-right: 10px;
+}
+
+.flight-list-container .flight-list-content .flight-list-header .header-left .from-station-details .from-station {
+  font-size: 14px;
+  font-weight: 400;
+  color: darkgray;
+}
+
+.flight-list-container .flight-list-content .flight-list-body .flight-list-header .flight-details .flight-name,
+.flight-list-container .flight-list-content .flight-list-header .header-left .from-station-details .station-name {
+  font-size: 20px;
+  font-weight: 600;
+  color: #000;
+}
+
+.flight-list-container .flight-list-content .flight-list-body {
+  background-color: #f5f9f9;
+  margin-top: 3%;
+  padding: 2%;
+  border-radius: 20px;
+}
+
+.flight-list-container .flight-list-content .flight-list-body .flight-list-header .flight-details .flight-image {
+  width: 150px;
+}
+
+.flight-list-container .flight-list-content .flight-list-body .flight-list-header .flight-details .flight-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

@@ -1,0 +1,69 @@
+.boking-modal {
+  display: flex;
+  color: #fff;
+  flex-direction: column;
+}
+
+.boking-modal .modal .modal-content {
+  color: #fff;
+  background: #13171a;
+  border: 1px solid #46535d;
+}
+
+.boking-modal .modal .modal-dialog .modal-content .modal-body .modal-body-container .category-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.boking-modal .modal .modal-dialog .modal-content .modal-body .modal-body-container .category-row .category {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.boking-modal .modal .modal-dialog .modal-content .modal-body .modal-body-container .category-row .category-btns {
+  display: flex;
+  align-items: center;
+}
+
+.boking-modal .modal .modal-dialog .modal-content .modal-body .modal-body-container .category-row .category-btns .category-count {
+  margin: 0 10px;
+}
+
+.boking-modal .custom-dd {
+  background-color: #232b31;
+  border: none;
+  text-align: center;
+  /* font-size: 10px; */
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 10px 16px;
+  transition: all 0.5s;
+}
+
+.boking-modal .custom-dd:hover {
+  /* border: 1px solid #46535d; */
+  background-color: #232b31;
+  box-shadow: 5px 5px 10px rgba(225, 225, 225, 0.3), -5px -5px 10px rgba(225, 225, 225, 0.3);
+}
+
+.boking-modal .custom-dd div {
+  font-size: 10px;
+  background-color: #232b31;
+  transition: all 0.5s;
+}
+
+.boking-modal .custom-dd .eye-logo {
+  color: #02abc0;
+  background-color: #232b31;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.modal .modal-dialog .modal-content .modal-footer .btn-primary {
+  width: 100%;
+}

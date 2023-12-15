@@ -1,0 +1,107 @@
+.booking-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+}
+
+.booking-page .badges {
+  display: flex;
+  width: 80%;
+  margin-bottom: 2%;
+}
+
+.booking-page .badges .sigle-badge {
+  display: flex;
+  align-items: flex-end;
+  padding: 6px 20px;
+  border: 1px solid #2e3d41;
+  border-radius: 999px;
+  margin-right: 20px;
+  transition: all 0.5s;
+}
+.booking-page .badges .sigle-badge:hover {
+  box-shadow: 5px 5px 10px rgba(225, 225, 225, 0.3), -5px -5px 10px rgba(225, 225, 225, 0.3);
+}
+
+.booking-page .badges .sigle-badge .badge-icon-div .badge-icon {
+  color: #8a8a8a;
+}
+.booking-page .badges .sigle-badge .badge-icon-div .badge-icon.active {
+  color: #02a7bd;
+}
+
+.booking-page .badges .sigle-badge .badge {
+  color: #949b98;
+}
+
+.booking-page .booking-container {
+  width: 80%;
+  background-color: #13171a;
+  border: 1px solid #2e3d41;
+  border-radius: 10px;
+  padding: 2%;
+}
+
+.booking-page .booking-container .first-row {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 3rem;
+
+  /* justify-content: space-between; */
+}
+
+.booking-page .booking-container .first-row .input-comp {
+  width: 30%;
+  margin: 0 1%;
+  position: relative;
+}
+
+.booking-page .booking-container .first-row .input-comp .cities-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #000;
+  color: #fff;
+  width: 100%;
+  /* padding: 2%; */
+  z-index: 99;
+  max-height: 200px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.booking-page .booking-container .first-row .input-comp .cities-list .searched-cities .searched-city-name {
+  padding: 2% 4%;
+  cursor: pointer;
+  border-bottom: 1px solid #2e3d41;
+  transition: all 0.5s;
+}
+
+.booking-page .booking-container .first-row .input-comp .cities-list .searched-cities .searched-city-name:hover {
+  background-color: #2e3d41;
+}
+
+.booking-page .booking-container .first-row .go-icon {
+  margin: 0 1%;
+  width: 3%;
+  font-size: 150%;
+  margin-top: 2%;
+  color: #fff;
+}
+
+.booking-page .booking-container .first-row.second-row {
+  justify-content: center;
+  margin-top: 2%;
+}
+
+.booking-page .booking-container .first-row.second-row .submit-btn .btn-primary {
+  background-color: #02abc0;
+  border: 1px solid #02abc0;
+}
+
+.booking-page .booking-container .first-row.second-row .submit-btn .btn-primary:hover {
+  opacity: 0.9;
+}
