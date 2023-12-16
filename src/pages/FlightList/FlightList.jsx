@@ -1,14 +1,26 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./FlightList.css";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { useNavigate, useLocation } from "react-router-dom";
 
 const FlightList = () => {
+  const navigate = useNavigate();
   const location = useLocation();
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
-    console.log(location.state);
-  }, []);
+    const userToken = localStorage.getItem("user_token");
+    if (!userToken) {
+      navigate("/");
+    } else if (location.state === null) {
+      navigate("/search-flight");
+    }
+    setLoading(false);
+  }, [navigate, location.state]);
+
+  if (loading) {
+    return "loading";
+  }
   return (
     <div className="flight-list-container">
       <div className="flight-list-content">

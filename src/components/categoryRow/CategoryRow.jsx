@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./CategoryRow.css";
-import { FaAngleDown, FaUser, FaPlus, FaMinus } from "react-icons/fa6";
+import { FaPlus, FaMinus } from "react-icons/fa6";
 
 const CategoryRow = ({ category, counterHandler }) => {
   const [count, setCount] = useState(0);

@@ -5,8 +5,6 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 const InputButton = ({ type, value, label, Icon, placeHolder, inputValueHandler }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
-  const [showDD, setShowDD] = useState(false);
-  const [inputData, setInputData] = useState(value);
 
   const showPasswordHandler = () => {
     setShowPassword(!showPassword);
@@ -18,8 +16,6 @@ const InputButton = ({ type, value, label, Icon, placeHolder, inputValueHandler 
   };
 
   const inputHandler = (event) => {
-    console.log(event.target.value);
-    // setInputData(event.target.value);
     inputValueHandler(event.target.value);
   };
 
@@ -51,42 +47,6 @@ const InputButton = ({ type, value, label, Icon, placeHolder, inputValueHandler 
           Icon
         )}
       </div>
-      {showDD ? (
-        <div className="custom-dropdown">
-          <div className="ul-div-s">
-            <div className="li-div">Nasim Akhtar</div>
-            <div className="li-div">Nasim Akhtar</div>
-            <div className="li-div">Nasim Akhtar</div>
-            <div className="li-div">Nasim Akhtar</div>
-            <div className="li-div">Nasim Akhtar</div>
-          </div>
-          {/* <ul class="dropdown-menu show">
-          <li>
-            <a class="dropdown-item active" href="#">
-              Action
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="#">
-              Another action
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="#">
-              Something else here
-            </a>
-          </li>
-          <li>
-            <hr class="dropdown-divider" />
-          </li>
-          <li>
-            <a class="dropdown-item" href="#">
-              Separated link
-            </a>
-          </li>
-        </ul> */}
-        </div>
-      ) : null}
     </div>
   );
 };

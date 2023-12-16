@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import { useState, useCallback } from "react";
 
 const useThrottle = (callback, delay) => {
   const [lastCall, setLastCall] = useState(0);

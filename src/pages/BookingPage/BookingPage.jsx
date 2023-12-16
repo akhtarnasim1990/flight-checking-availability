@@ -8,7 +8,7 @@ import { PiClockCountdownFill } from "react-icons/pi";
 import Modal from "../../components/modal/Modal";
 import SelectionComp from "../../components/selection/SelectionComp";
 import InputButton from "../../components/inputButton/InputButton";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import CryptoJS from "crypto-js";
 import axios from "axios";
 import * as yup from "yup";
@@ -37,7 +37,6 @@ const BookingPage = () => {
   const [infant, setInfant] = useState(0);
   const [classType, setClassType] = useState("ECONOMY");
   const [travelType, setTravelType] = useState("oneway");
-  const [flightList, setFlightList] = useState([]);
 
   let schema1 = yup.object().shape({
     fromCity: yup.string().required(),
@@ -53,12 +52,13 @@ const BookingPage = () => {
   });
 
   useEffect(() => {
-    console.log("booking page rendering....");
-  }, []);
+    const userToken = localStorage.getItem("user_token");
+    if (!userToken) {
+      navigate("/");
+    }
+  }, [navigate]);
 
   const handleInputChange = useThrottle((value, setList) => {
-    // Your logic here (e.g., API call, state update)
-    console.log("Throttled value:", value);
     const city = JSON.stringify({
       search_key: value,
     });
@@ -74,12 +74,11 @@ const BookingPage = () => {
 
     const data = { request_data: ciphertext };
     axios.post(process.env.REACT_APP_BASE_URL + "flight/search-flight-airport", data, config).then((response) => {
-      console.log(response);
       if (response.status === 200 || response.statusText === "OK") {
         setList(response.data.main_data.data);
       }
     });
-  }, 1000); // 1000ms (1 second) delay
+  }, 1000);
 
   const fromCitySearchHandler = (city) => {
     setFromCity(city);
@@ -88,7 +87,6 @@ const BookingPage = () => {
         fromCity: fromCity,
       })
       .then(function (valid) {
-        console.log("validation: ", valid); // => true
         if (valid) {
           handleInputChange(fromCity, setFromCitiesList);
         }
@@ -102,71 +100,13 @@ const BookingPage = () => {
         toCity: toCity,
       })
       .then(function (valid) {
-        console.log("validation: ", valid); // => true
         if (valid) {
           handleInputChange(toCity, setToCitiesList);
         }
       });
   };
 
-  const searchCity = (searchKey) => {
-    console.log("searching city...", searchKey);
-    handleInputChange(fromCity.name);
-    const city = JSON.stringify({
-      from_airport: "CCU",
-      to_airport: "DEL",
-      departure_date: "2023-12-29",
-      return_date: "2024-01-29",
-      adults: "1",
-      childs: "0",
-      infants: "0",
-      class_type: "ECONOMY",
-      travel_type: "oneway",
-      max_result: 100,
-      user_id: 0,
-    });
-    // console.log(city);
-    // setFromCity(searchKey);
-  };
-
-  // const searchFlightHander = (searchKey) => {
-  //   const res = schema1
-  //     .isValid({
-  //       fromCity: fromCity,
-  //       toCity: toCity,
-  //     })
-  //     .then(function (valid) {
-  //       console.log("validation: ", valid); // => true
-  //       if (valid) {
-  //         const credntial = JSON.stringify({
-  //           fromCity,
-  //           toCity,
-  //         });
-
-  //         console.log(process.env.REACT_APP_ENCRYPTED_KEY);
-
-  //         const ciphertext = CryptoJS.AES.encrypt(credntial, process.env.REACT_APP_ENCRYPTED_KEY).toString();
-  //         console.log("ciphertext: ", ciphertext);
-  //         const config = {
-  //           headers: {
-  //             apikey: process.env.REACT_APP_API_KEY,
-  //             currency: process.env.REACT_APP_CURRENCY,
-  //           },
-  //         };
-  //         const data = { request_data: ciphertext };
-  //         console.log(process.env.REACT_APP_BASE_URL + "auth/login");
-  //         axios.post(process.env.REACT_APP_BASE_URL + "auth/login", data, config).then((response) => {
-  //           console.log(response);
-  //           if (response.status === 200 || response.statusText === "OK") {
-  //             navigate("/search-flight");
-  //           }
-  //         });
-  //       }
-  //     });
-  // };
-
   const selectCity = (city, _city_cat) => {
-    console.log(city, _city_cat);
     if (_city_cat === "from_city") {
       setFromCity(city.airport_name);
       setFromAirport({
@@ -225,9 +165,7 @@ const BookingPage = () => {
 
     const data = { request_data: ciphertext };
     axios.post(process.env.REACT_APP_BASE_URL + "flight/flight-search-list", data, config).then((response) => {
-      console.log(response);
       if (response.status === 200 || response.statusText === "OK") {
-        // setFlightList(response.data.main_data.data);
         const dataMain = response.data.main_data;
         navigate("/flight/list", { state: { from: fromAirport, to: toAirport, date: departure, info: dataMain } });
       }
@@ -314,10 +252,8 @@ const BookingPage = () => {
         <div className="first-row">
           <div className="input-comp">
             <Modal adultHandler={setAdult} childHandler={setChild} infantHandler={setInfant} adult={adult} child={child} infant={infant} />
-            {/* <InputButton type="text" label="Traveller(s)" Icon={<FaAngleDown className="eye-logo" />} /> */}
           </div>
           <div className="input-comp">
-            {/* <InputButton type="text" label="Preferred Class" Icon={<FaAngleDown className="eye-logo" />} placeHolder="Economy" /> */}
             <SelectionComp />
           </div>
         </div>

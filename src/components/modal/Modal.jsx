@@ -1,5 +1,5 @@
 import "./Modal.css";
-import { FaAngleDown, FaUser, FaPlus, FaMinus } from "react-icons/fa6";
+import { FaAngleDown, FaUser } from "react-icons/fa6";
 import { GoDotFill } from "react-icons/go";
 import CategoryRow from "../categoryRow/CategoryRow";
 

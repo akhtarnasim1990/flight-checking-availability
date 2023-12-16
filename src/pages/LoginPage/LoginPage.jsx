@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./LoginPage.css";
 import InputButton from "../../components/inputButton/InputButton";
 import * as yup from "yup";
@@ -18,28 +18,21 @@ const LoginPage = () => {
     }),
   });
 
-  useEffect(() => {
-    console.log("LoginPage in useEffect");
-  }, []);
-
   const loginHandler = () => {
-    const res = schema
+    schema
       .isValid({
         email: email,
         password: password,
       })
       .then(function (valid) {
-        console.log("validation: ", valid); // => true
         if (valid) {
           const credntial = JSON.stringify({
             email,
             password: password,
           });
 
-          console.log(process.env.REACT_APP_ENCRYPTED_KEY);
-
           const ciphertext = CryptoJS.AES.encrypt(credntial, process.env.REACT_APP_ENCRYPTED_KEY).toString();
-          console.log("ciphertext: ", ciphertext);
+
           const config = {
             headers: {
               apikey: process.env.REACT_APP_API_KEY,
@@ -47,10 +40,9 @@ const LoginPage = () => {
             },
           };
           const data = { request_data: ciphertext };
-          console.log(process.env.REACT_APP_BASE_URL + "auth/login");
           axios.post(process.env.REACT_APP_BASE_URL + "auth/login", data, config).then((response) => {
-            console.log(response);
             if (response.status === 200 || response.statusText === "OK") {
+              localStorage.setItem("user_token", response.data.main_data.data.profile.token);
               navigate("/search-flight");
             }
           });
